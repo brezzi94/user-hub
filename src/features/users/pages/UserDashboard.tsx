@@ -1,11 +1,14 @@
 import {useState} from "react";
 import UsersTable from "../components/UserTable/UserTable.tsx";
+import { useUsers } from "../hooks/useUsers";
+import { LayoutGrid, Table } from "lucide-react";
 import {Button, Container, Spinner} from "react-bootstrap";
 import Select from "../../../components/ui/Select/Select.tsx";
+import UsersGrid from "../components/UserGrid/UsersGrid.tsx";
+import ModalCustom from "../../../components/ui/Modal/Modal.tsx";
 import SearchBar from "../../../components/ui/SearchBar/SearchBar.tsx";
 import "./UserDashboard.css";
-import {useUsers} from "../hooks/useUsers.tsx";
-import ModalCustom from "../../../components/ui/Modal/Modal.tsx";
+import PaginationCustom from "../../../components/ui/Pagination/PaginationCustom.tsx";
 import type {User} from "../types/user.ts";
 
 export default function UsersDashboard() {
@@ -14,6 +17,13 @@ export default function UsersDashboard() {
     const [selectedRole, setSelectedRole] = useState<string>("all");
     const [role, setRole] = useState<string>("all");
     const [selectedUser, setSelectedUser] = useState<User | null>(null);
+    const [view, setView] = useState<"table" | "grid">("table");
+
+    const [currentPage, setCurrentPage] = useState(1);
+    const itemsPerPage = 5;
+
+    const indexOfLastUser = currentPage * itemsPerPage;
+    const indexOfFirstUser = indexOfLastUser - itemsPerPage;
 
     if (loading) {
         return (
@@ -35,13 +45,32 @@ export default function UsersDashboard() {
         return matchesRole && matchesName;
     });
 
+    const currentUsers = filteredUsers.slice(indexOfFirstUser, indexOfLastUser)
+
+    const handlePageChange = (page: number) => setCurrentPage(page);
+
     return (
         <Container className="user-dashboard">
             <header className="dashboard-header mb-4">
                 <h4 className="dashboard-title">
                     Filtra gli utenti per ruolo
                 </h4>
-            </header>
+
+                <div className="view-toggle d-flex gap-2 mt-2 mt-md-0">
+                    <Button
+                        variant={view === "table" ? "secondary" : "light"}
+                        onClick={() => setView("table")}
+                    >
+                        <Table size={16} /> Tabella
+                    </Button>
+                    <Button
+                        variant={view === "grid" ? "secondary" : "light"}
+                        onClick={() => setView("grid")}
+                    >
+                        <LayoutGrid size={16} /> Card
+                    </Button>
+                </div>
+           </header>
 
             <div className="filters mb-4">
                 <div className="filter-group">
@@ -67,7 +96,16 @@ export default function UsersDashboard() {
 
             <main>
                 {!loading && (
-                    <UsersTable users={filteredUsers} onSelect={setSelectedUser}/>
+                    <>
+                        {view === "table" ? (
+                            <UsersTable users={currentUsers} onSelect={setSelectedUser}  />
+                        ) : (
+                            <UsersGrid users={currentUsers} onSelect={setSelectedUser} />
+                        )}
+                       {filteredUsers.length > itemsPerPage &&
+                           <PaginationCustom currentPage={currentPage} handlePageChange={handlePageChange} itemsPerPage={itemsPerPage} elements={filteredUsers} />
+                       }
+                    </>
                 )}
             </main>
 

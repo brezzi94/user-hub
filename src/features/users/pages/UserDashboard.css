@@ -12,6 +12,12 @@
     color: #333;
 }
 
+.view-toggle button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
 .user-modal-content {
     display: flex;
     flex-direction: column;
