@@ -1,0 +1,28 @@
+.table-card {
+    border-radius: 12px;
+    overflow: hidden;
+    background-color: #fff;
+    border: 1px solid #ddd;
+}
+
+.table {
+    margin-bottom: 0;
+    border-radius: 0;
+}
+
+.table thead th {
+    background-color: #f4f4f6;
+    color: #333;
+    font-weight: 600;
+    border-bottom: 1px solid #ddd;
+}
+
+.table tbody tr:hover {
+    background-color: #f0f0f3;
+    cursor: pointer;
+}
+
+.table td, .table th {
+    padding: 0.75rem 1rem;
+    vertical-align: middle;
+}

@@ -1,0 +1,40 @@
+.user-dashboard {
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+}
+
+.dashboard-header {
+    flex-wrap: wrap;
+}
+
+.dashboard-title {
+    font-weight: 700;
+    color: #333;
+}
+
+.filters {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.filter-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.filter-select {
+    flex: 1 1 180px;
+    min-width: 160px;
+}
+
+.filter-button {
+    white-space: nowrap;
+}
+
+.search-wrapper {
+    width: 100%;
+}
+
