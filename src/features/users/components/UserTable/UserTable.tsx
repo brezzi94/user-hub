@@ -4,9 +4,10 @@ import type {User} from "../../types/user.ts";
 
 interface UsersTableProps {
     users: User[];
+    onSelect: (user: User) => void;
 }
 
-export default function UsersTable({ users } : UsersTableProps) {
+export default function UsersTable({ users, onSelect } : UsersTableProps) {
     return (
         <Card className="table-card">
             <div className="table-responsive">
@@ -29,6 +30,7 @@ export default function UsersTable({ users } : UsersTableProps) {
                         ) : (
                             users.map((user) => (
                                 <tr key={user.id}
+                                    onClick={() => onSelect(user)}
                                 >
                                     <td>{user.nome}</td>
                                     <td>{user.cognome}</td>
