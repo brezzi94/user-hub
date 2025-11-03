@@ -1,73 +1,76 @@
-# React + TypeScript + Vite
+This project is a **fully working React + TypeScript application** built with **Vite**.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+It meets the following requirements:
 
-Currently, two official plugins are available:
+- React + TypeScript setup
+- Fully functional filtering and search logic for users
+- Switch between table and card views
+- Modal for user detail
+- Responsive layout (desktop and mobile)
+- Light / Dark theme toggle
+- Runs locally with a simple setup
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### How to run locally
 
-## React Compiler
+1. Clone this repository:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+   ```bash
+   git clone https://github.com/brezzi94/user-hub.git
+   cd userhub
 
-## Expanding the ESLint configuration
+### Start project
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+1. Install dependencies:
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+   ```bash
+   npm install
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+2. Start the development server:
+   ```bash
+   npm run dev
+or npm start
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+3. Open the app in your browser:
+   ```bash
+   http://localhost:5173
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Notes
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- The app uses mock data from /data/users.json, fetched locally to simulate an API.
+- All functionality (filter, search, pagination, modal) works without an external backend.
+- The project is self-contained, meaning anyone can install and run it locally using only Node.js and npm.
+
+
+### Unit tests
+Tests are implemented with Vitest e React Testing Library.
+
+1. Installation:
+    ```bash
+    npm install -D vitest @testing-library/react @testing-library/jest-dom jsdom
+
+2. In vite.config.js:
+   ```bash
+   test: {
+    environment: "jsdom",
+    globals: true,
+    setupFiles: "./src/setupTests.ts",
+   }
+
+3. Add src/setupTests.ts:
+   ```bash
+   import "@testing-library/jest-dom";
+
+4. Add a script in package.json:
+   ```bash
+   "scripts": {
+     "test": "vitest --environment jsdom"
+   }
+
+5. Run:
+   ```bash
+   npm run test
+
+Author: Claudia Breazzano
+Frontend Developer — React + TypeScript
+email: claudiabreazzano@gmail.com
