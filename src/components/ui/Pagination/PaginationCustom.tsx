@@ -13,15 +13,18 @@ export default function PaginationCustom({currentPage, handlePageChange, itemsPe
     return (
         <nav
             className="pagination-wrapper d-flex justify-content-center mt-3"
+            aria-label="Navigazione tra le pagine utenti"
         >
             <Pagination>
                 <Pagination.First
                     disabled={currentPage === 1}
                     onClick={() => handlePageChange(1)}
+                    aria-label="Prima pagina"
                 />
                 <Pagination.Prev
                     disabled={currentPage === 1}
                     onClick={() => handlePageChange(currentPage - 1)}
+                    aria-label="Pagina precedente"
                 />
 
                 {Array.from({
@@ -31,6 +34,7 @@ export default function PaginationCustom({currentPage, handlePageChange, itemsPe
                         key={i + 1}
                         active={i + 1 === currentPage}
                         onClick={() => handlePageChange(i + 1)}
+                        aria-current={i + 1 === currentPage ? "page" : undefined}
                     >
                         {i + 1}
                     </Pagination.Item>
@@ -39,12 +43,14 @@ export default function PaginationCustom({currentPage, handlePageChange, itemsPe
                 <Pagination.Next
                     disabled={currentPage === Math.ceil(elements.length / itemsPerPage)}
                     onClick={() => handlePageChange(currentPage + 1)}
+                    aria-label="Pagina successiva"
                 />
                 <Pagination.Last
                     disabled={currentPage === Math.ceil(elements.length / itemsPerPage)}
                     onClick={() =>
                         handlePageChange(Math.ceil(elements.length / itemsPerPage))
                     }
+                    aria-label="Ultima pagina"
                 />
             </Pagination>
         </nav>

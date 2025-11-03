@@ -15,9 +15,15 @@
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
 }
 
-.user-card:hover{
+.user-card:hover,
+.user-card:focus {
     transform: translateY(-3px);
     box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+}
+
+.user-card:focus-visible {
+    outline: 2px solid #8234c0;
+    outline-offset: 3px;
 }
 
 .user-card-header {
@@ -62,6 +68,16 @@
     font-weight: 500;
 }
 
+@media (max-width: 600px) {
+    .user-card-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .user-avatar {
+        width: 48px;
+        height: 48px;
+    }
+}
 
 body.dark .user-card {
     background-color: #1f1f22;
@@ -84,14 +100,4 @@ body.dark .user-email {
 
 body.dark .user-role {
     color: #ccc;
-}
-
-body.dark .user-status.active {
-    background-color: #264b37;
-    color: #81d7a1;
-}
-
-body.dark .user-status.suspended {
-    background-color: #4a2525;
-    color: #f7a6a6;
 }

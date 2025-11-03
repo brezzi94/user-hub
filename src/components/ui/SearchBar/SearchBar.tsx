@@ -19,6 +19,8 @@ export default function SearchBar({search, setSearch}: SelectProps) {
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
                     placeholder="Cerca per nome o email..."
+                    aria-label="Campo di ricerca utenti"
+                    aria-describedby="search-icon"
                 />
             </InputGroup>
         </div>

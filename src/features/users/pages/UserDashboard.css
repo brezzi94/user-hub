@@ -114,6 +114,30 @@
     width: 100%;
 }
 
+@media (min-width: 768px) {
+    .filters {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .filter-group {
+        flex-direction: row;
+        flex-wrap: nowrap;
+        gap: 0.75rem;
+    }
+
+    .search-wrapper {
+        flex-grow: 1;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .search-wrapper .search-bar {
+        max-width: 320px;
+        width: 100%;
+    }
+}
 
 body.dark .dashboard-title {
     color: #f1f1f1;

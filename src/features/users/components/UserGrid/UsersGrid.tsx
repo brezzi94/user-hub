@@ -13,12 +13,17 @@ export default function UsersGrid({ users, onSelect }: UsersGridProps) {
     }
 
     return (
-        <div className="users-grid">
+        <div className="users-grid" aria-label="Elenco utenti in visualizzazione card">
             {users.map((user) => (
                 <Card
+                    as="article"
                     key={user.id}
                     className="user-card"
+                    role="button"
+                    tabIndex={0}
+                    aria-label={`Apri dettagli di ${user.nome} ${user.cognome}`}
                     onClick={() => onSelect(user)}
+                    onKeyDown={(e) => e.key === "Enter" && onSelect(user)}
                 >
                     <div className="user-card-header">
                         <div>

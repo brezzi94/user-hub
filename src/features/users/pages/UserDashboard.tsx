@@ -52,8 +52,8 @@ export default function UsersDashboard() {
     const handlePageChange = (page: number) => setCurrentPage(page);
 
     return (
-       <Container className="user-dashboard">
-           <header className="dashboard-header d-flex justify-content-between align-items-center flex-wrap mb-4">
+        <Container as="section" className="user-dashboard" aria-labelledby="user-dashboard-title">
+            <header className="dashboard-header d-flex justify-content-between align-items-center flex-wrap mb-4">
                 <h4 id="user-dashboard-title" className="dashboard-title">
                     Filtra gli utenti per ruolo
                 </h4>
@@ -62,17 +62,21 @@ export default function UsersDashboard() {
                     <Button
                         variant={view === "table" ? "secondary" : "light"}
                         onClick={() => setView("table")}
+                        aria-pressed={view === "table"}
+                        aria-label="Visualizza in tabella"
                     >
                         <Table size={16} /> Tabella
                     </Button>
                     <Button
                         variant={view === "grid" ? "secondary" : "light"}
                         onClick={() => setView("grid")}
+                        aria-pressed={view === "grid"}
+                        aria-label="Visualizza in card"
                     >
                         <LayoutGrid size={16} /> Card
                     </Button>
                 </div>
-           </header>
+            </header>
 
             <div className="filters mb-4">
                 <div className="filter-group">
@@ -84,15 +88,16 @@ export default function UsersDashboard() {
                     />
                     <Button
                         variant="secondary"
-                        className="filter-button"
                         onClick={() => setRole(selectedRole)}
+                        aria-label="Applica filtro per ruolo"
+                        className="filter-button"
                     >
                         Cerca
                     </Button>
                 </div>
 
                 <div className="search-wrapper">
-                    <SearchBar search={search} setSearch={setSearch} />
+                    <SearchBar search={search} setSearch={setSearch} aria-label="Cerca per nome o cognome" />
                 </div>
             </div>
 
@@ -104,9 +109,9 @@ export default function UsersDashboard() {
                         ) : (
                             <UsersGrid users={currentUsers} onSelect={setSelectedUser} />
                         )}
-                       {filteredUsers.length > itemsPerPage &&
-                           <PaginationCustom currentPage={currentPage} handlePageChange={handlePageChange} itemsPerPage={itemsPerPage} elements={filteredUsers} />
-                       }
+                        {filteredUsers.length > itemsPerPage &&
+                            <PaginationCustom currentPage={currentPage} handlePageChange={handlePageChange} itemsPerPage={itemsPerPage} elements={filteredUsers} />
+                        }
                     </>
                 )}
             </main>

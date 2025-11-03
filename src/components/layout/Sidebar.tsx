@@ -13,19 +13,19 @@ export default function Sidebar() {
 
             <nav className="sidebar-nav" role="navigation">
                 <ul>
-                {routes.map(({ path, label, icon: Icon }) => (
-                    <li key={path}>
-                        <NavLink
-                            to={path}
-                            className={({ isActive }) =>
-                                `sidebar-link ${isActive ? "active" : ""}`
-                            }
-                        >
-                            {Icon && <Icon className="icon" size={18} />}
-                            <span>{label}</span>
-                        </NavLink>
-                    </li>
-                ))}
+                    {routes.map(({ path, label, icon: Icon }) => (
+                        <li key={path}>
+                            <NavLink
+                                to={path}
+                                className={({ isActive }) =>
+                                    `sidebar-link ${isActive ? "active" : ""}`
+                                }
+                            >
+                                {Icon && <Icon className="icon" size={18} />}
+                                <span>{label}</span>
+                            </NavLink>
+                        </li>
+                    ))}
                 </ul>
             </nav>
         </aside>

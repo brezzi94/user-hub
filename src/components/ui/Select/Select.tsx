@@ -12,6 +12,7 @@ export default function Select({ className, options, value, onChange }: SelectPr
     return (
         <div className={className}>
             <Form.Select
+                aria-label="Filtro per ruolo"
                 value={value}
                 onChange={(e) => onChange?.(e.target.value)}
             >

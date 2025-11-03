@@ -60,6 +60,15 @@
     border-color: #999;
 }
 
+@media (max-width: 768px) {
+    .navbar {
+        padding: 0 1rem;
+    }
+    .navbar-title {
+        font-size: 1rem;
+    }
+}
+
 body.dark .navbar {
     background-color: #1f1f22;
     border-color: #2e2e33;

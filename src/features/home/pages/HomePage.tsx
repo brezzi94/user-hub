@@ -8,9 +8,9 @@ export default function HomePage() {
     const navigate = useNavigate();
 
     return (
-        <Container as="section" className="homepage-container">
+        <Container as="section" className="homepage-container" aria-labelledby="homepage-title">
             <div className="text-center mb-4">
-                <h2 className="homepage-title">Benvenuto in <span className="brand-accent">UserHub</span></h2>
+                <h2 id="homepage-title" className="homepage-title">Benvenuto in <span className="brand-accent">UserHub</span></h2>
                 <p className="homepage-subtitle">
                     Gestisci e visualizza gli utenti della piattaforma in modo semplice e intuitivo.
                 </p>
@@ -18,10 +18,15 @@ export default function HomePage() {
 
             <section
                 className="homepage-sections"
+                aria-label="Sezioni principali della dashboard"
             >
-                <Card
+                <Card as="article"
+                      role="button"
+                      tabIndex={0}
                       className="homepage-card"
                       onClick={() => navigate(ROUTES.USER_DASHBOARD.path)}
+                      onKeyDown={(e) => e.key === "Enter" && navigate(ROUTES.USER_DASHBOARD.path)}
+                      aria-label="Vai alla sezione Gestione Utenti"
                 >
                     <div className="homepage-card-content">
                         <div className="homepage-icon" aria-hidden="true">

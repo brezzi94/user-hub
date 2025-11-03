@@ -9,7 +9,7 @@ interface UsersTableProps {
 
 export default function UsersTable({ users, onSelect } : UsersTableProps) {
     return (
-        <Card className="table-card">
+        <Card className="table-card" aria-label="Elenco utenti">
             <div className="table-responsive">
                 <Table hover className="align-middle mb-0">
                     <thead className="table-light">
@@ -21,24 +21,28 @@ export default function UsersTable({ users, onSelect } : UsersTableProps) {
                     </tr>
                     </thead>
                     <tbody>
-                        {users.length === 0 ? (
-                            <tr>
-                                <td colSpan={4} className="text-center py-3 text-muted">
-                                    Nessun utente trovato.
-                                </td>
+                    {users.length === 0 ? (
+                        <tr>
+                            <td colSpan={4} className="text-center py-3 text-muted">
+                                Nessun utente trovato.
+                            </td>
+                        </tr>
+                    ) : (
+                        users.map((user) => (
+                            <tr key={user.id}
+                                onClick={() => onSelect(user)}
+                                onKeyDown={(e) => e.key === "Enter" && onSelect(user)}
+                                role="button"
+                                tabIndex={0}
+                                aria-label={`Dettagli di ${user.nome} ${user.cognome}`}
+                            >
+                                <td>{user.nome}</td>
+                                <td>{user.cognome}</td>
+                                <td>{user.email}</td>
+                                <td>{user.ruolo}</td>
                             </tr>
-                        ) : (
-                            users.map((user) => (
-                                <tr key={user.id}
-                                    onClick={() => onSelect(user)}
-                                >
-                                    <td>{user.nome}</td>
-                                    <td>{user.cognome}</td>
-                                    <td>{user.email}</td>
-                                    <td>{user.ruolo}</td>
-                                </tr>
-                            ))
-                        )}
+                        ))
+                    )}
                     </tbody>
                 </Table>
             </div>

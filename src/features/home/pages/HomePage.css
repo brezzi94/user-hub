@@ -34,7 +34,8 @@
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
 }
 
-.homepage-card:hover{
+.homepage-card:hover,
+.homepage-card:focus {
     transform: translateY(-3px);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
     border-color: #bbb;
@@ -66,6 +67,23 @@
     font-size: 0.9rem;
 }
 
+.homepage-card:focus-visible {
+    outline: 3px solid #4a5ee5;
+    outline-offset: 3px;
+}
+
+@media (max-width: 600px) {
+    .homepage-title {
+        font-size: 1.5rem;
+    }
+    .homepage-card-content {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .homepage-icon {
+        margin-bottom: 0.5rem;
+    }
+}
 
 body.dark .homepage-title {
     color: #f1f1f1;

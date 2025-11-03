@@ -28,6 +28,23 @@
     min-width: 0;
 }
 
+@media (max-width: 768px) {
+    .layout {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        height: auto;
+        border-right: none;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .page-content {
+        padding: 1rem;
+    }
+}
+
 body.dark .layout {
     background-color: #1a1a1d;
 }

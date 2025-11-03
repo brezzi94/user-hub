@@ -1,3 +1,8 @@
+.form-select:focus {
+    border-color: #8234c0;
+    box-shadow: 0 0 0 2px #4a5ee555;
+}
+
 body.dark .form-select {
     background-color: #1f1f22;
     color: #eee;

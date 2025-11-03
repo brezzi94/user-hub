@@ -1,0 +1,14 @@
+body {
+    background-color: #f7f7f8;
+    color: #222;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dark body {
+    background-color: #1f1f22;
+    color: #eaeaea;
+}
+
+* {
+    transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
