@@ -14,3 +14,27 @@
     color: #333;
     margin-left: 1rem;
 }
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-right: 1rem;
+}
+
+.user-name {
+    font-size: 0.95rem;
+    color: #444;
+}
+
+.navbar-user-avatar {
+    width: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #ccc;
+}
+
+.navbar-user-avatar:hover {
+    transform: scale(1.05);
+    border-color: #999;
+}
