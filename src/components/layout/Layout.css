@@ -1,0 +1,29 @@
+.layout {
+    display: flex;
+    min-height: 100vh;
+    background-color: #f8f8f9;
+}
+
+.layout .sidebar {
+    flex-shrink: 0;
+}
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 0;
+}
+
+.main-content > header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.page-content {
+    flex: 1;
+    padding: 1.5rem;
+    overflow-y: auto;
+    min-width: 0;
+}
