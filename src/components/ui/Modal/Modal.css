@@ -1,1 +1,14 @@
+body.dark .modal-content {
+    background-color: #1f1f22;
+    border-color: #2e2e33;
+}
 
+body.dark .modal-header,
+body.dark .modal-body {
+    background-color: #1f1f22;
+    color: #eaeaea;
+}
+
+body.dark .btn-close {
+    filter: invert(1);
+}

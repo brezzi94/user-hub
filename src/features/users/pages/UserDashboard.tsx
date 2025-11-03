@@ -9,10 +9,12 @@ import ModalCustom from "../../../components/ui/Modal/Modal.tsx";
 import SearchBar from "../../../components/ui/SearchBar/SearchBar.tsx";
 import "./UserDashboard.css";
 import PaginationCustom from "../../../components/ui/Pagination/PaginationCustom.tsx";
+import {useTheme} from "../../../hooks/useTheme.tsx";
 import type {User} from "../types/user.ts";
 
 export default function UsersDashboard() {
     const { users, loading, error } = useUsers();
+    const { theme } = useTheme();
     const [search, setSearch] = useState("");
     const [selectedRole, setSelectedRole] = useState<string>("all");
     const [role, setRole] = useState<string>("all");
@@ -28,7 +30,7 @@ export default function UsersDashboard() {
     if (loading) {
         return (
             <div className="d-flex justify-content-center align-items-center" style={{ minHeight: "200px" }}>
-                <Spinner animation="border" role="status">
+                <Spinner animation="border" role="status" variant={theme === "dark" ? "light" : "dark"}>
                     <span className="visually-hidden">Caricamento...</span>
                 </Spinner>
             </div>
@@ -50,9 +52,9 @@ export default function UsersDashboard() {
     const handlePageChange = (page: number) => setCurrentPage(page);
 
     return (
-        <Container className="user-dashboard">
-            <header className="dashboard-header mb-4">
-                <h4 className="dashboard-title">
+       <Container className="user-dashboard">
+           <header className="dashboard-header d-flex justify-content-between align-items-center flex-wrap mb-4">
+                <h4 id="user-dashboard-title" className="dashboard-title">
                     Filtra gli utenti per ruolo
                 </h4>
 

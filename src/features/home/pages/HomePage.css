@@ -65,3 +65,37 @@
     color: #666;
     font-size: 0.9rem;
 }
+
+
+body.dark .homepage-title {
+    color: #f1f1f1;
+}
+
+body.dark .homepage-subtitle {
+    color: #aaa;
+}
+
+body.dark .homepage-card {
+    background-color: #1f1f22;
+    border-color: #2e2e33;
+    box-shadow: 0 2px 6px rgba(255, 255, 255, 0.05);
+}
+
+body.dark .homepage-card:hover,
+body.dark .homepage-card:focus {
+    background-color: #2a2a2e;
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.08);
+}
+
+body.dark .homepage-card-title {
+    color: #eee;
+}
+
+body.dark .homepage-card-text {
+    color: #aaa;
+}
+
+body.dark .homepage-icon {
+    background-color: #2f2f33;
+    color: #ddd;
+}

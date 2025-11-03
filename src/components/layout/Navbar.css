@@ -15,6 +15,27 @@
     margin-left: 1rem;
 }
 
+.navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.navbar-right .p-2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 36px;
+    width: 36px;
+    border-radius: 8px;
+    background-color: #f0f0f2;
+    transition: background 0.2s ease;
+}
+
+.navbar-right .p-2:hover {
+    background-color: #e0e0e5;
+}
+
 .user-info {
     display: flex;
     align-items: center;
@@ -37,4 +58,18 @@
 .navbar-user-avatar:hover {
     transform: scale(1.05);
     border-color: #999;
+}
+
+body.dark .navbar {
+    background-color: #1f1f22;
+    border-color: #2e2e33;
+}
+body.dark .navbar-title {
+    color: #f1f1f1;
+}
+body.dark .user-name {
+    color: #ddd;
+}
+body.dark .navbar-user-avatar {
+    border-color: #444;
 }

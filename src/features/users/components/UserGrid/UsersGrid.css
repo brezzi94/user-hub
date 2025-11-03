@@ -61,3 +61,37 @@
     color: #444;
     font-weight: 500;
 }
+
+
+body.dark .user-card {
+    background-color: #1f1f22;
+    border-color: #333;
+    box-shadow: 0 2px 6px rgba(255, 255, 255, 0.05);
+}
+
+body.dark .user-card:hover {
+    background-color: #2a2a2e;
+    box-shadow: 0 3px 8px rgba(255, 255, 255, 0.08);
+}
+
+body.dark .user-name {
+    color: #eee;
+}
+
+body.dark .user-email {
+    color: #aaa;
+}
+
+body.dark .user-role {
+    color: #ccc;
+}
+
+body.dark .user-status.active {
+    background-color: #264b37;
+    color: #81d7a1;
+}
+
+body.dark .user-status.suspended {
+    background-color: #4a2525;
+    color: #f7a6a6;
+}

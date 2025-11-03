@@ -114,3 +114,46 @@
     width: 100%;
 }
 
+
+body.dark .dashboard-title {
+    color: #f1f1f1;
+}
+
+body.dark .view-toggle .btn-light {
+    background-color: #2b2b2f;
+    border-color: #333;
+    color: #ddd;
+}
+
+body.dark .view-toggle .btn-light:hover {
+    background-color: #35353a;
+    color: #fff;
+}
+
+
+body.dark .user-modal-content {
+    color: #eee;
+}
+
+body.dark .user-modal-avatar {
+    background-color: #1f1f22;
+    border-color: #333;
+}
+
+body.dark .user-modal-name {
+    color: #f1f1f1;
+}
+
+body.dark .user-modal-email {
+    color: #aaa;
+}
+
+body.dark .badge-success {
+    background-color: #264b37;
+    color: #81d7a1;
+}
+
+body.dark .badge-danger {
+    background-color: #4a2525;
+    color: #f7a6a6;
+}

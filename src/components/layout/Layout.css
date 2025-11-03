@@ -27,3 +27,7 @@
     overflow-y: auto;
     min-width: 0;
 }
+
+body.dark .layout {
+    background-color: #1a1a1d;
+}
