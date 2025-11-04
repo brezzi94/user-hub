@@ -1,20 +1,18 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import UsersTable from "../components/UserTable/UserTable.tsx";
 import { useUsers } from "../hooks/useUsers";
 import { LayoutGrid, Table } from "lucide-react";
-import {Button, Container, Spinner} from "react-bootstrap";
+import {Button, Container} from "react-bootstrap";
 import Select from "../../../components/ui/Select/Select.tsx";
 import UsersGrid from "../components/UserGrid/UsersGrid.tsx";
 import ModalCustom from "../../../components/ui/Modal/Modal.tsx";
 import SearchBar from "../../../components/ui/SearchBar/SearchBar.tsx";
 import "./UserDashboard.css";
 import PaginationCustom from "../../../components/ui/Pagination/PaginationCustom.tsx";
-import {useTheme} from "../../../hooks/useTheme.tsx";
 import type {User} from "../types/user.ts";
 
 export default function UsersDashboard() {
     const { users, loading, error } = useUsers();
-    const { theme } = useTheme();
     const [search, setSearch] = useState("");
     const [selectedRole, setSelectedRole] = useState<string>("all");
     const [role, setRole] = useState<string>("all");
@@ -22,20 +20,11 @@ export default function UsersDashboard() {
     const [view, setView] = useState<"table" | "grid">("table");
 
     const [currentPage, setCurrentPage] = useState(1);
-    const itemsPerPage = 5;
+    const [itemsPerPage, setItemsPerPage] = useState<number>(view === "table" ? 5 : 8);
 
-    const indexOfLastUser = currentPage * itemsPerPage;
-    const indexOfFirstUser = indexOfLastUser - itemsPerPage;
+    const indexOfLastUser = currentPage * Number(itemsPerPage);
+    const indexOfFirstUser = indexOfLastUser - Number(itemsPerPage);
 
-    if (loading) {
-        return (
-            <div className="d-flex justify-content-center align-items-center" style={{ minHeight: "200px" }}>
-                <Spinner animation="border" role="status" variant={theme === "dark" ? "light" : "dark"}>
-                    <span className="visually-hidden">Caricamento...</span>
-                </Spinner>
-            </div>
-        );
-    }
     if (error)
         return <p className="text-center text-danger py-3">Errore: {error}</p>;
 
@@ -50,6 +39,14 @@ export default function UsersDashboard() {
     const currentUsers = filteredUsers.slice(indexOfFirstUser, indexOfLastUser)
 
     const handlePageChange = (page: number) => setCurrentPage(page);
+
+    useEffect(() => {
+        setCurrentPage(1)
+    }, [view, itemsPerPage]);
+
+    useEffect(() => {
+        setItemsPerPage(view === "table" ? 5 : 8)
+    }, [view]);
 
     return (
         <Container as="section" className="user-dashboard" aria-labelledby="user-dashboard-title">
@@ -102,18 +99,35 @@ export default function UsersDashboard() {
             </div>
 
             <main>
-                {!loading && (
                     <>
                         {view === "table" ? (
-                            <UsersTable users={currentUsers} onSelect={setSelectedUser}  />
+                            <UsersTable users={currentUsers} onSelect={setSelectedUser} loading={loading} />
                         ) : (
-                            <UsersGrid users={currentUsers} onSelect={setSelectedUser} />
+                            <UsersGrid users={currentUsers} onSelect={setSelectedUser} loading={loading}/>
                         )}
-                        {filteredUsers.length > itemsPerPage &&
-                            <PaginationCustom currentPage={currentPage} handlePageChange={handlePageChange} itemsPerPage={itemsPerPage} elements={filteredUsers} />
-                        }
+
+                            <div className="pagination-container d-flex justify-content-between align-items-center mt-3 flex-wrap">
+                                <div className="d-flex align-items-center gap-2 mostra-wrapper mb-2 mb-md-0">
+                                    <label htmlFor="mostra-select" className="mb-0 text-muted small">
+                                        Mostra
+                                    </label>
+                                    <Select
+                                        className="mostra-select"
+                                        options={view==="table" ? ["5", "10", "20", "30"] : ["8", "16", "32", "64"]}
+                                        value={String(itemsPerPage)}
+                                        onChange={(value) => setItemsPerPage(Number(value))}
+                                    />
+                                    <span className="text-muted small">per pagina</span>
+                                </div>
+
+                                <PaginationCustom
+                                    currentPage={currentPage}
+                                    handlePageChange={handlePageChange}
+                                    itemsPerPage={Number(itemsPerPage)}
+                                    elements={filteredUsers}
+                                />
+                            </div>
                     </>
-                )}
             </main>
 
             <ModalCustom

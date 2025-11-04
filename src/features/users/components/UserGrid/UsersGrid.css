@@ -101,3 +101,11 @@ body.dark .user-email {
 body.dark .user-role {
     color: #ccc;
 }
+
+body.dark .spinner-grid {
+    color: #ccc;
+}
+
+body.dark .span-grid {
+    color: #ccc !important;
+}

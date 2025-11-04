@@ -1,13 +1,14 @@
-import {Card, Table} from "react-bootstrap";
+import {Card, Spinner, Table} from "react-bootstrap";
 import "./UserTable.css";
 import type {User} from "../../types/user.ts";
 
 interface UsersTableProps {
     users: User[];
     onSelect: (user: User) => void;
+    loading: boolean;
 }
 
-export default function UsersTable({ users, onSelect } : UsersTableProps) {
+export default function UsersTable({ users, onSelect, loading }: UsersTableProps) {
     return (
         <Card className="table-card" aria-label="Elenco utenti">
             <div className="table-responsive">
@@ -21,7 +22,14 @@ export default function UsersTable({ users, onSelect } : UsersTableProps) {
                     </tr>
                     </thead>
                     <tbody>
-                    {users.length === 0 ? (
+                    {loading ? (
+                        <tr>
+                            <td colSpan={4} className="text-center py-3">
+                                <Spinner animation="border" role="status" />
+                                <span className="ms-2 text-muted">Caricamento utenti...</span>
+                            </td>
+                        </tr>
+                    ) : users.length === 0 ? (
                         <tr>
                             <td colSpan={4} className="text-center py-3 text-muted">
                                 Nessun utente trovato.
@@ -29,7 +37,8 @@ export default function UsersTable({ users, onSelect } : UsersTableProps) {
                         </tr>
                     ) : (
                         users.map((user) => (
-                            <tr key={user.id}
+                            <tr
+                                key={user.id}
                                 onClick={() => onSelect(user)}
                                 onKeyDown={(e) => e.key === "Enter" && onSelect(user)}
                                 role="button"

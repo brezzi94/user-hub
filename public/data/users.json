@@ -30,5 +30,69 @@
     "email": "anna.neri@example.com",
     "ruolo": "Editor",
     "status": "Attivo"
+  },
+  {
+    "id": 5,
+    "nome": "Paolo",
+    "cognome": "Galli",
+    "email": "paolo.galli@example.com",
+    "ruolo": "Viewer",
+    "status": "Sospeso"
+  },
+  {
+    "id": 6,
+    "nome": "Sara",
+    "cognome": "Conti",
+    "email": "sara.conti@example.com",
+    "ruolo": "Admin",
+    "status": "Attivo"
+  },
+  {
+    "id": 7,
+    "nome": "Marco",
+    "cognome": "Leoni",
+    "email": "marco.leoni@example.com",
+    "ruolo": "Editor",
+    "status": "Attivo"
+  },
+  {
+    "id": 8,
+    "nome": "Elena",
+    "cognome": "Romano",
+    "email": "elena.romano@example.com",
+    "ruolo": "Viewer",
+    "status": "Attivo"
+  },
+  {
+    "id": 9,
+    "nome": "Federico",
+    "cognome": "Ferrari",
+    "email": "federico.ferrari@example.com",
+    "ruolo": "Editor",
+    "status": "Sospeso"
+  },
+  {
+    "id": 10,
+    "nome": "Chiara",
+    "cognome": "Marini",
+    "email": "chiara.marini@example.com",
+    "ruolo": "Viewer",
+    "status": "Attivo"
+  },
+  {
+    "id": 11,
+    "nome": "Davide",
+    "cognome": "Riva",
+    "email": "davide.riva@example.com",
+    "ruolo": "Admin",
+    "status": "Sospeso"
+  },
+  {
+    "id": 12,
+    "nome": "Laura",
+    "cognome": "Moretti",
+    "email": "laura.moretti@example.com",
+    "ruolo": "Editor",
+    "status": "Attivo"
   }
 ]

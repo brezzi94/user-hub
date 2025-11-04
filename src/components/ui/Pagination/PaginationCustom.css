@@ -10,6 +10,47 @@ body.dark .pagination .page-item.active .page-link {
     color: #fff;
 }
 
+.pagination .page-item.active .page-link {
+    background-color: #8234c0; /* viola, come il tuo tema */
+    border-color: #8234c0;
+    color: #fff;
+}
+
+.pagination .page-link {
+    color: #8234c0; /* colore del testo dei numeri */
+    border-color: #ccc;
+}
+
+.pagination .page-link:hover {
+    background-color: #f4e8ff; /* colore di hover */
+    border-color: #8234c0;
+}
+
+.pagination-container {
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    padding-top: 1rem;
+}
+
+.mostra-select {
+    min-width: 70px;
+    height: 32px;
+    font-size: 0.9rem;
+}
+
+.mostra-wrapper label,
+.mostra-wrapper span {
+    color: var(--bs-secondary-color, #666);
+}
+
+
 body.dark .pagination .page-link:hover {
     background-color: #2e2e33;
+}
+
+body.dark .pagination-container {
+    border-top-color: rgba(255, 255, 255, 0.1);
+}
+body.dark .mostra-wrapper label,
+body.dark .mostra-wrapper span {
+    color: #bbb !important;
 }
