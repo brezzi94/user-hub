@@ -29,6 +29,12 @@ body.dark .pagination .page-item.active .page-link {
 .pagination-container {
     border-top: 1px solid rgba(0, 0, 0, 0.1);
     padding-top: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* per dispositivi piccoli */
+    gap: 1rem;
+    margin-top: 1.5rem;
 }
 
 .mostra-select {
@@ -37,11 +43,30 @@ body.dark .pagination .page-item.active .page-link {
     font-size: 0.9rem;
 }
 
+.mostra-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
 .mostra-wrapper label,
 .mostra-wrapper span {
     color: var(--bs-secondary-color, #666);
 }
 
+@media (max-width: 768px) {
+    .pagination-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 0.75rem;
+    }
+
+    .mostra-wrapper {
+        justify-content: center;
+    }
+}
 
 body.dark .pagination .page-link:hover {
     background-color: #2e2e33;
